@@ -1,0 +1,10 @@
+<div>
+  <div class="chat-bubble {{isFromMe() ? 'left' : 'right'}}">
+    <div class="message">{{chatMessage.message}}</div>
+    <div class="message-detail" style="float:right">
+      <span>{{chatMessage.from}}</span>
+      <br/>
+      <span>{{formatEpoch(chatMessage.epoch)}}</span>
+    </div>
+  </div>
+</div>

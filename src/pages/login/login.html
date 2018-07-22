@@ -1,0 +1,36 @@
+﻿<ion-header>
+
+  <ion-navbar>
+    <ion-title>login customer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <form 
+        #form="ngForm"
+        (ngSubmit)="form.form.valid && login()">
+
+    <ion-item>
+          <ion-label floating>e-mail</ion-label>
+          <ion-input #Email="ngModel" type="email"
+                     pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                     required [(ngModel)]="user.email" name="email"></ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && Email.errors && Email.errors.required" class="required">Email is required</div>
+       <div *ngIf="form.submitted && Email.errors && Email.errors.pattern" class="required">Email is not valid</div>
+           <ion-item>
+          <ion-label floating>password</ion-label>
+          <ion-input #Password="ngModel" type="password" required
+                     [(ngModel)]="user.password" name="password"></ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && !Password.valid"
+             class="required">Password is required</div>
+
+  <div padding>
+    <button ion-button block type="submit">Sign In</button>
+  </div>
+  </form>
+  <div padding>
+    <button ion-button block [navPush]="createCustomerPage">Register</button>
+  </div>
+</ion-content>

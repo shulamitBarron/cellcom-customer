@@ -1,0 +1,60 @@
+﻿<ion-header>
+  <ion-navbar>
+    <ion-title>Create Customer</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="form.form.valid && saveDetails()">
+               <ion-item>
+          <ion-label floating>name</ion-label>
+          <ion-input #Name="ngModel" 
+                     type="text"
+                     required [(ngModel)]="customer.name" 
+                     name="name">
+          </ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && !Name.valid"
+             class="required">Name is required</div>
+        <ion-item>
+          <ion-label floating>e-mail</ion-label>
+          <ion-input #Email="ngModel" type="email"
+                     pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                     required 
+                     [(ngModel)]="customer.email" 
+                     name="email">
+          </ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && Email.errors && Email.errors.required" class="required">Email is required</div>
+       <div *ngIf="form.submitted && Email.errors && Email.errors.pattern" class="required">Email is not valid</div>
+         <ion-item>
+          <ion-label floating>password</ion-label>
+          <ion-input #Password="ngModel" type="password" required
+                     [(ngModel)]="customer.password" name="password"></ion-input>
+        </ion-item>
+        <div *ngIf="form.submitted && !Password.valid"
+             class="required">Password is required</div>
+      
+        <ion-item>
+          <ion-label floating>phone</ion-label>
+          <ion-input #telephone="ngModel" type="text" required pattern="^[+0-9][0-9\-]*$" 
+                     [(ngModel)]="customer.phone" name="phone"></ion-input>
+        </ion-item>
+  <div *ngIf="telephone.errors && telephone.errors.pattern" class="required">Phone is not valid</div>
+      <div *ngIf="form.submitted && !telephone.value" class="required">Phone Number is required</div>
+        <ion-item>
+          <ion-label floating>address</ion-label>
+          <ion-input #Address="ngModel" type="text" required
+                     [(ngModel)]="customer.address" name="address"></ion-input>
+        </ion-item>
+ <div *ngIf="form.submitted && !Address.valid" class="required">Address is required</div>
+   
+     
+
+        <button ion-button type="submit" block>SAVE</button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
