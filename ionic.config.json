@@ -1,0 +1,8 @@
+{
+  "name": "Cellcom-customer",
+  "app_id": "f54f70a4",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
